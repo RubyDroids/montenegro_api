@@ -1,6 +1,8 @@
 class State < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :country, touch: true
+  
+  belongs_to :country
+  has_many :subdivisions
   
   scope :search, -> (term) {
     where("LOWER(name) LIKE :term", term: "%#{term.downcase}%")

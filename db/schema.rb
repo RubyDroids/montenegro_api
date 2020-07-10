@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_000901) do
+ActiveRecord::Schema.define(version: 2020_07_10_010715) do
 
   create_table "states", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,20 @@ ActiveRecord::Schema.define(version: 2020_07_10_000901) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "country_id"
     t.index ["country_id"], name: "index_states_on_country_id"
+  end
+
+  create_table "subdivisions", force: :cascade do |t|
+    t.string "name"
+    t.string "display_name"
+    t.string "postcode"
+    t.text "boundingbox"
+    t.string "lat"
+    t.string "lon"
+    t.string "reference_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "state_id"
+    t.index ["state_id"], name: "index_subdivisions_on_state_id"
   end
 
 end

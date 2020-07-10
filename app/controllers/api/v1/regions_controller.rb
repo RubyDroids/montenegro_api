@@ -15,6 +15,8 @@ module Api
     end
     
     def geo
+# api_url = "https://nominatim.openstreetmap.org/search?country=montenegro&postalcode=85340&addressdetails=1&format=json"
+      
       api_url = "https://nominatim.openstreetmap.org/search?country=Montenegro&format=geojson"
       response = HTTParty.get(api_url)
       render json: response
@@ -37,17 +39,19 @@ module Api
       render json: response
     end
     
-    
-    def retrieve_details(zipcode)
-      endpoint = "https://nominatim.openstreetmap.org/search?country=argentina&postalcode=#{zipcode}&addressdetails=1&format=json"
 
-      results = JSON.parse(RestClient.get(endpoint), object_class: OpenStruct)
-
-      if results.first.try(:address).present?
-        return results.first
+    # GET
+    # /api/v1/regions/validate/:postcode
+    def validate
+      zipcode = Subdivision.where(postcode: params[:postcode]).take
+      
+      if zipcode.present?
+        response = { status: :ok, message: "Postcode found", result: zipcode }
       else
-        return false
+        response = { status: :not_found, message: "Postcode not found" }
       end
+      
+      render json: response
     end
         
     private

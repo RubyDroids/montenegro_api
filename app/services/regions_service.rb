@@ -38,16 +38,4 @@ class RegionsService
       response = { status: :not_valid, message: "Ingresa un código postal de 4 digitos." }
     end
   end
-
-  def retrieve_details(zipcode)
-    endpoint = "https://nominatim.openstreetmap.org/search?country=argentina&postalcode=#{zipcode}&addressdetails=1&format=json"
-
-    results = JSON.parse(RestClient.get(endpoint), object_class: OpenStruct)
-
-    if results.first.try(:address).present?
-      return results.first
-    else
-      return false
-    end
-  end
 end
