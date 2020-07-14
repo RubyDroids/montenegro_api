@@ -2,7 +2,6 @@
 module Api
   class V1::RegionsController < ApiController
     before_action :set_country
-    include HTTParty
     
     def index
       response = { message: "Index for API regions method" }
@@ -15,10 +14,11 @@ module Api
     end
     
     def geo
-# api_url = "https://nominatim.openstreetmap.org/search?country=montenegro&postalcode=85340&addressdetails=1&format=json"
+      # api_url = "https://nominatim.openstreetmap.org/search?country=montenegro&postalcode=85340&addressdetails=1&format=json"
       
       api_url = "https://nominatim.openstreetmap.org/search?country=Montenegro&format=geojson"
-      response = HTTParty.get(api_url)
+      #response = HTTParty.get(api_url)
+      response = JSON.parse(RestClient.get(api_url))
       render json: response
     end
 

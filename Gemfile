@@ -16,7 +16,6 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
-gem 'httparty'
 
 gem 'rails-i18n'
 gem 'route_translator'
