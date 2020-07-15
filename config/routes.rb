@@ -1,4 +1,5 @@
 Rails.application.routes.draw do  
+  get 'pages/index'
   # http://railscasts.com/episodes/350-rest-api-versioning?view=asciicast
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
@@ -13,5 +14,6 @@ Rails.application.routes.draw do
     end
   end
   
-  root to: 'home#index'
+  root to: 'pages#index'
+  get '/about', to: 'pages#about', as: :about
 end
