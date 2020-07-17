@@ -1,2 +1,58 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-5 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Free API for Regions in Montenegro</h5>
+        
+        <p class="card-text">This is an open-source project. Using this RESTful API service you can validate Postcode (Zipcode) in Montenegro. It's free and available for everyone who need to validate zipcode, get districts information and other regional data.</p>
+        
+        <p class="card-text">Example of use: in shopping cart of eCommerce. Just point to us and validate typed by user postcode.</p>
+        
+        <%= root_url[0...-1] + country_api_v1_regions_path %>
+        
+        <pre class="mt-2">
+          <code lang="ruby">
+# Get all information about country
+RestClient.get('http://localhost:3001/api/v1/regions/country/?id=1')
+
+# =>
+{
+  "name":"Montenegro",
+  "country_code":"382",
+  "currency_code":"EUR",
+  "geo": {
+    "latitude":"42.708678",
+    "latitude_dec":"42.752803802490234",
+    "longitude":"19.37439",
+    "longitude_dec":"19.237918853759766",
+    "max_latitude":"43.558743",
+    "max_longitude":"20.3574869",
+    "min_latitude":"41.8297",
+    "min_longitude":"18.4337921"
+  }
+}
+          </code>
+        </pre>
+        
+        <a href="#" class="btn btn-secondary mt20">Get your credentials</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-7 mb-4">
+    <iframe 
+      width="100%" 
+      height="550" 
+      frameborder="0" 
+      scrolling="no" 
+      marginheight="0" 
+      marginwidth="0"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=16.660766601562504%2C41.35207214451295%2C20.742187500000004%2C43.94537239244211&amp;layer=mapnik" 
+  style="border: 1px solid dimedgray">
+  </iframe>
+  <p class="text-right"> 
+    <small>
+      <a href="https://www.openstreetmap.org/#map=8/42.662/18.701" class="link-secondary">See a bigger map</a>
+    </small>
+  </p>
+  </div>
+</div>

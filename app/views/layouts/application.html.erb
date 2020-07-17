@@ -19,8 +19,18 @@
   <body id="montenegro_api" class="">
     <%= render "shared/navbar" %>
     
-    <div id="content" class="container-fluid">
+    <div id="content" class="container">
         <%= yield %>
     </div>
+    
+    <footer class="container-fluid bg-light text-center mt-5 p-2">
+      <p class="font-weight-light text-muted mt-2">
+        Brought you by <a href="https://rubydroids.com" class="text-reset">RubyDroids Co</a>. Star this project at 
+        <a href="#" class=text-reset>
+          Github
+          <i class="fab fa-github ml-1"></i>
+        </a>
+      </p>
+    </footer>
   </body>
 </html>
